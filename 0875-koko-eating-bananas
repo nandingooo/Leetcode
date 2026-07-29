@@ -1,0 +1,23 @@
+import math
+from typing import List
+
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int):
+        l = 1
+        r = max(piles)
+
+        def isgood(mid):
+            res = 0
+            for p in piles:
+                res += math.ceil(p / mid)
+            return res <= h
+
+        while l < r:
+            mid = (l + r) // 2
+
+            if isgood(mid):
+                r = mid
+            else:
+                l = mid + 1
+
+        return l
