@@ -1,0 +1,14 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        sign = -1 if x < 0 else 1
+        LIMIT = 2 ** 31 - 1
+        x = abs(x)
+        res = 0 
+
+        while x: 
+            c = x % 10
+            x = x//10
+            res = res*10 + c 
+            if res > LIMIT:
+                return 0 
+        return sign * res
